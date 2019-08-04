@@ -662,8 +662,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   moveRandom: 1
-  randomDirection: 0
-  direction: 12
 --- !u!114 &-1469391077654108896
 MonoBehaviour:
   m_ObjectHideFlags: 0
