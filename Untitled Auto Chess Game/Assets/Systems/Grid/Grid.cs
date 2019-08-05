@@ -20,6 +20,7 @@ namespace GridSystem
 
         public bool createHeroes = false;
         public int amount = 0;
+        private static int heroCount = 0;
 
 #endif
 
@@ -99,6 +100,7 @@ namespace GridSystem
                 if (!t.IsOccupied)
                 {
                     var h = Instantiate(hero, new Vector3(x, 0, y), Quaternion.identity);
+                    h.name = $"Hero_{heroCount++}";
                     InsertToBoard(h, x, y);
                 }
             }

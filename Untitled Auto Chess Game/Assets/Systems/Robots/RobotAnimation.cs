@@ -44,7 +44,7 @@ public class RobotAnimation : MonoBehaviour
                 _anim.SetBool(anim, true);
                 if (anim == "Hurt" || anim == "SpinSttack")
                 {
-                    Invoke("DeactivateAll", 0.1f);
+                    Invoke("DeactivateAll", 0.0001f);
                 }
                 continue;
             }

@@ -9,7 +9,7 @@ public class Movement : TileObjectProperties
 {
     Vector3 _destination = Vector3.zero;
     DirectionEnum _direction;
-    public float _rotationTime = 200f;
+    public float rotationSpeed = 200f;
 
     private UnityEvent EndMove = new UnityEvent();
     private UnityEvent BeginMove = new UnityEvent();
@@ -46,7 +46,7 @@ public class Movement : TileObjectProperties
 
         #endif
         #endregion
-
+        
         // request to occupy tile in the specified direction.
         // does the adjacent tile exists?
         var check = caller?.tile?.GetAdjacent(dir);
@@ -65,7 +65,7 @@ public class Movement : TileObjectProperties
         _destination = new Vector3(caller.CurrentIndex.Item1, 0, caller.CurrentIndex.Item2);
 
         // start turning
-        StartCoroutine(Turn(caller, _rotationTime, _direction));
+        StartCoroutine(Turn(caller, rotationSpeed, _direction));
 
         // move
         while (caller.transform.position != _destination)
@@ -85,9 +85,19 @@ public class Movement : TileObjectProperties
         callback?.Invoke();
     }
 
+    public void Turn(TileObject obj, DirectionEnum dir)
+    {
+        StartCoroutine(Turn(obj, rotationSpeed, dir));
+    }
+
+    public void TurnTo(TileObject rotator, TileObject target)
+    {
+        Turn(rotator, GetDirection(rotator, target));
+    }
+
     private IEnumerator Turn(TileObject obj, float speed, DirectionEnum dir)
     {
-        var rot = Direction.DirectionAsDegree(dir);
+        var rot = Direction.DirectionToDegrees(dir);
 
         float counter = 0;
 
@@ -96,11 +106,19 @@ public class Movement : TileObjectProperties
 
         while (counter < speed)
         {
-            counter += (speed * Time.deltaTime);
+            counter += speed * Time.deltaTime;
             obj.transform.localRotation = Quaternion.RotateTowards(origin, rotation, counter);
             yield return null;
         }
 
+    }
+
+    public DirectionEnum GetDirection(TileObject t1, TileObject t2)
+    {
+        var t = TileObject.Distance(t1, t2);
+        var v = new Vector2(t.Item1, t.Item2);
+
+        return Direction.FromV2(v);
     }
 
     private void OnBeginMove() => BeginMove?.Invoke();
@@ -110,40 +128,50 @@ public class Movement : TileObjectProperties
 public static class Direction
 {
     // Directions as degrees
-    public const int n = 0, ne = 45, e = 90, se = 135, s = 180, sw = 225, w = 270, nw = 315, nn = 360;
-    private static readonly int range = 45;
-
+    public const int n = 90, ne = 45, e = 0, se = 315, s = 270, sw = 225, w = 180, nw = 135;
+    private const int range = 45;
+    private const float Deg2Rad = 0.01745329f;
+    private const float Rad2Deg = 57.29578f;
+    
     public static DirectionEnum FromV2(Vector2 direction)
     {
-        var angle = Vector2.Angle(Vector2.up, direction.normalized);
+        var angle = Vector2.SignedAngle(Vector2.right, direction.normalized);
+        angle *= Deg2Rad;
 
         return GetDirection(angle);
     }
 
-    public static DirectionEnum GetDirection(float angle)
+    public static DirectionEnum GetDirection(float angleRad)
     {
-        angle = angle % 360;
-
-        angle = angle < 0 ? angle + 360 : angle;
-
-        if (AngleWithinDirectionRange(angle, DirectionEnum.North))
+        if (AngleWithinDirectionRange(angleRad, DirectionEnum.North))
             return DirectionEnum.North;
-        if (AngleWithinDirectionRange(angle, DirectionEnum.NorthEast))
+        if (AngleWithinDirectionRange(angleRad, DirectionEnum.NorthEast))
             return DirectionEnum.NorthEast;
-        if (AngleWithinDirectionRange(angle, DirectionEnum.East))
+        if (AngleWithinDirectionRange(angleRad, DirectionEnum.East))
             return DirectionEnum.East;
-        if (AngleWithinDirectionRange(angle, DirectionEnum.SouthEast))
+        if (AngleWithinDirectionRange(angleRad, DirectionEnum.SouthEast))
             return DirectionEnum.SouthEast;
-        if (AngleWithinDirectionRange(angle, DirectionEnum.South))
+        if (AngleWithinDirectionRange(angleRad, DirectionEnum.South))
             return DirectionEnum.South;
-        if (AngleWithinDirectionRange(angle, DirectionEnum.SouthWest))
+        if (AngleWithinDirectionRange(angleRad, DirectionEnum.SouthWest))
             return DirectionEnum.SouthWest;
-        if (AngleWithinDirectionRange(angle, DirectionEnum.West))
+        if (AngleWithinDirectionRange(angleRad, DirectionEnum.West))
             return DirectionEnum.West;
-        if (AngleWithinDirectionRange(angle, DirectionEnum.NorthWest))
+        if (AngleWithinDirectionRange(angleRad, DirectionEnum.NorthWest))
             return DirectionEnum.NorthWest;
 
-        throw new FormatException("There's no Direction corresponding to the angel given motherfucker.");
+        throw new FormatException("There's no Direction corresponding to the angel given motherfucker. Angel was: " + angleRad);
+    }
+
+    public static bool AngleWithinDirectionRange(float angleRad, DirectionEnum dir)
+    {
+        var offset = range / 2f;
+        var d2r = DirectionAsRadians(dir);
+
+        var v1 = new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)).normalized;
+        var v2 = new Vector2(Mathf.Cos(d2r), Mathf.Sin(d2r)).normalized;
+  
+        return Vector2.Angle(v1, v2) >= offset ? false : true;
     }
 
     public static Tuple<int, int> DirectionAsOffset(DirectionEnum dir)
@@ -170,7 +198,31 @@ public static class Direction
                 return new Tuple<int, int>(0, 0);
         }
     }
-    public static int DirectionAsDegree(DirectionEnum dir)
+    public static int DirectionToDegrees(DirectionEnum dir)
+    {
+        switch (dir)
+        {
+            case DirectionEnum.North:
+                return 0;
+            case DirectionEnum.East:
+                return 90;
+            case DirectionEnum.South:
+                return 180;
+            case DirectionEnum.West:
+                return 270;
+            case DirectionEnum.NorthEast:
+                return 45;
+            case DirectionEnum.NorthWest:
+                return 315;
+            case DirectionEnum.SouthWest:
+                return 225;
+            case DirectionEnum.SouthEast:
+                return 135;
+            default:
+                return 0;
+        }
+    }
+    private static int DirectionAsDegree(DirectionEnum dir)
     {
         switch (dir)
         {
@@ -194,13 +246,9 @@ public static class Direction
                 return n;
         }
     }
-
-    private static bool AngleWithinDirectionRange(float angle, DirectionEnum dir)
+    private static float DirectionAsRadians(DirectionEnum dir)
     {
-        if (angle < 0)
-            angle += 360f;
-
-        return angle > DirectionAsDegree(dir) - range/2f || angle < DirectionAsDegree(dir) + range/2f;
+        return DirectionAsDegree(dir) * Deg2Rad;
     }
 }
 

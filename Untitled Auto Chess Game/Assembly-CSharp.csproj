@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scriptable Objects\Module.cs" />
     <Compile Include="Assets\Scriptable Objects\Robot.cs" />
     <Compile Include="Assets\Scriptable Objects\Socket.cs" />
+    <Compile Include="Assets\Systems\Debug\TestDirection.cs" />
     <Compile Include="Assets\Systems\Robots\RobotAnimation.cs" />
     <None Include="Assets\Maor\3D\AurynSky_Asset_Pack\Forest Pack\READ ME.txt" />
     <Reference Include="Unity.Timeline.Editor">
