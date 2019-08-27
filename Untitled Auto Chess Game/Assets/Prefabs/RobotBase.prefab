@@ -552,14 +552,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2948603288612550360}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.000002324581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7895161849716806445}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2948603288612550361
 Animator:
   serializedVersion: 3
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc20360d756be54bafe783f1bc39168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationTime: 300
+  rotationSpeed: 200
   debugMovement: 0
   breakOnDebug: 0
   alertOnStop: 0
@@ -707,7 +707,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   moveRandom: 0
-  atkRandom: 1
+  atkRandom: 0
 --- !u!114 &4903670881108704960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,6 +780,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 500
   ReceiveDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Death:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,

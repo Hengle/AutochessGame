@@ -69,12 +69,30 @@
     <Compile Include="Assets\Maor\3D\AurynSky_Asset_Pack\Forest Pack\Scripts\Rotator.cs" />
     <Compile Include="Assets\Maor\3D\AurynSky_Asset_Pack\Forest Pack\Scripts\WheelController.cs" />
     <Compile Include="Assets\Maor\Helpers\Animation_Manager_Script.cs" />
-    <Compile Include="Assets\Scriptable Objects\Module.cs" />
-    <Compile Include="Assets\Scriptable Objects\Robot.cs" />
-    <Compile Include="Assets\Scriptable Objects\Socket.cs" />
     <Compile Include="Assets\Systems\Debug\TestDirection.cs" />
+    <Compile Include="Assets\Systems\GUI Interactions\PurchaseRobot.cs" />
+    <Compile Include="Assets\Systems\Management\FlowManager.cs" />
+    <Compile Include="Assets\Systems\Management\GameManager.cs" />
     <Compile Include="Assets\Systems\Robots\RobotAnimation.cs" />
     <None Include="Assets\Maor\3D\AurynSky_Asset_Pack\Forest Pack\READ ME.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Unity Projects/Personal Projects/RobotoChess/Untitled Auto Chess Game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

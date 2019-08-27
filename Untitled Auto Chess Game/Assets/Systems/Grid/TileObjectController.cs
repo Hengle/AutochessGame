@@ -6,7 +6,7 @@ using UnityEngine.Events;
 namespace GridSystem
 {
     [RequireComponent(typeof(TileObject))]
-    class TileObjectController : MonoBehaviour
+    public class TileObjectController : MonoBehaviour
     {
         TileObject _tileObject;
         [SerializeField] [HideInInspector] Grid _grid;
@@ -39,12 +39,19 @@ namespace GridSystem
         private void OnBeginMove() => BeginMove?.Invoke();
         private void OnEndMove() => EndMove?.Invoke();
 
+        public void EnableForPlay()
+        {
+            atkRandom = true;
+            FindTargetAttackTest();
+            GetComponent<Attackable>().Death.AddListener(() => Destroy(gameObject));
+        }
 
-#if UNITY_EDITOR
+        #region DEBUG
 
         [Header("DEBUG")]
         public bool moveRandom = false;
-        public bool atkRandom;
+        [SerializeField]
+        private bool atkRandom;
 
         float counter = 1;
 
@@ -111,6 +118,6 @@ namespace GridSystem
         {
             StartCoroutine(GetComponent<Attacker>().Attack(target));
         }
-#endif
+        #endregion
     }
 }

@@ -16,6 +16,7 @@ namespace GridSystem
         private Tile[,] _grid;
 
         [Header("DEBUG")]
+
 #if UNITY_EDITOR
 
         public bool createHeroes = false;
@@ -23,7 +24,6 @@ namespace GridSystem
         private static int heroCount = 0;
 
 #endif
-
 
         private void Awake()
         {
@@ -37,7 +37,6 @@ namespace GridSystem
                     _grid[i, j].Initialize(this, new System.Tuple<int, int>(i, j));
                 }
             }
-
             #region TEST
 #if UNITY_EDITOR
 
@@ -67,17 +66,25 @@ namespace GridSystem
             return _grid.GetValue(iX, iY) as Tile;
         }
 
-        public void InsertToBoard(GameObject obj, int x, int y)
+        public bool InsertToBoard(GameObject obj, int x, int y)
         {
             var to = obj.GetComponent<TileObject>();
 
             if (GetTileAvailability(x, y))
-                return;
+                return false;
 
-            if (!to)
-                GetTile(x, y)?.RequestOccupy(obj.AddComponent<TileObject>());
-            else
-                GetTile(x, y)?.RequestOccupy(to);
+            obj.transform.position = new Vector3(x, 0, y);
+            var tile = GetTile(x, y);
+
+            if (tile != null)
+            {
+                if (!to)
+                    return tile.RequestOccupy(obj.AddComponent<TileObject>());
+                else
+                    return tile.RequestOccupy(to);
+            }
+
+            return false;
         }
 
         //private Tile CreateTile(int x, int y)
