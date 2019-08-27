@@ -15,9 +15,9 @@ namespace GridSystem
 
         private Tile[,] _grid;
 
-        [Header("DEBUG")]
 
 #if UNITY_EDITOR
+        [Header("DEBUG")]
 
         public bool createHeroes = false;
         public int amount = 0;
@@ -98,6 +98,7 @@ namespace GridSystem
         {
             return x >= 0 && x < gridSizeX && y < gridSizeY && y >= 0;
         }
+#if UNITY_EDITOR
         private void CreateHero(int x, int y)
         {
             var t = _grid.GetValue(x, y) as Tile;
@@ -112,6 +113,7 @@ namespace GridSystem
                 }
             }
         }
+#endif
     }
 }
 

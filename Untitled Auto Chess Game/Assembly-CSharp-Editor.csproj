@@ -62,8 +62,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\LWRP_ExampleAssets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
+    <Compile Include="Assets\_ARCHIVE\LWRP_ExampleAssets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeAcceptableFieldTypes.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeAcceptableRPCTypes.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeBaseClassType.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeClassFieldRPCValue.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeClassFieldValue.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeClassIdentity.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeClassObject.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeClassRewindValue.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeClassRPCValue.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeEditorButton.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeEditorField.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeEditorRPCField.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeNetworkingAboutEditor.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeNetworkingEditor.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ForgeNRPCTypes.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\IFNSerializable.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\SimpleJSONEditor.cs" />
+    <Compile Include="Assets\Bearded Man Studios Inc\Editor\ValidationResult.cs" />
     <Compile Include="Assets\Systems\Editor\GridEditor.cs" />
+    <None Include="Assets\Bearded Man Studios Inc\Editor\Resources\BMS_Forge_Editor\NetworkBehaviorTemplate.txt" />
+    <None Include="Assets\Bearded Man Studios Inc\Editor\Resources\BMS_Forge_Editor\NetworkObjectTemplate.txt" />
+    <None Include="Assets\Bearded Man Studios Inc\Editor\Resources\BMS_Forge_Editor\NetworkObjectFactoryTemplate.txt" />
+    <None Include="Assets\Bearded Man Studios Inc\Editor\Resources\BMS_Forge_Editor\StandAloneNetworkBehaviorTemplate.txt" />
+    <None Include="Assets\Bearded Man Studios Inc\Editor\Resources\BMS_Forge_Editor\NetworkManagerTemplate.txt" />
+    <None Include="Assets\Bearded Man Studios Inc\Editor\Resources\BMS_Forge_Editor\version.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Unity Projects/Personal Projects/RobotoChess/Untitled Auto Chess Game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
