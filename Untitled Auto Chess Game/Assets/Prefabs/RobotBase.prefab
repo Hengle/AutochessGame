@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: -1469391077654108896}
   m_Layer: 10
   m_Name: RobotBase
-  m_TagString: Untagged
+  m_TagString: PlayerRobot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc20360d756be54bafe783f1bc39168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 200
+  rotationSpeed: 500
   debugMovement: 0
   breakOnDebug: 0
   alertOnStop: 0

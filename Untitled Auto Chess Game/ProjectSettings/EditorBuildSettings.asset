@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Team/Dor/MultiplayerTest/MultiplayerMenuTest.unity
     guid: efac657751d16c442b7c74c158a967d7
   - enabled: 1
-    path: Assets/Team/Dor/Jump Start Multiplayer Test/JumpStart.unity
-    guid: c7099045ceb749f48b39d0151c71631d
+    path: Assets/Team/Dor/Main Game Test/DorMainTest.unity
+    guid: 2ec392875b2a4f2498a4538ec4250797
   m_configObjects: {}

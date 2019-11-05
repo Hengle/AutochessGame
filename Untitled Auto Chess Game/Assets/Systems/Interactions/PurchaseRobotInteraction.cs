@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using GridSystem;
 
-public class PurchaseRobot : MonoBehaviour
+public class PurchaseRobotInteraction : MonoBehaviour
 {
     public GameObject model;
     public LayerMask layers;
@@ -18,6 +18,7 @@ public class PurchaseRobot : MonoBehaviour
     private void Awake()
     {
         _btn = GetComponent<Button>();
+        model.tag = "PlayerRobot";
     }
 
     public void MouseDown()

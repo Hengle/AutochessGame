@@ -90,6 +90,9 @@ namespace GridSystem
             {
                 if (hit.transform.gameObject != gameObject)
                 {
+                    if (hit.transform.CompareTag("PlayerRobot"))
+                        continue;
+
                     if ((hit.point - transform.position).magnitude < min)
                     {
                         min = (hit.point - transform.position).magnitude;
@@ -97,6 +100,9 @@ namespace GridSystem
                     }
                 }
             }
+
+            if (info.transform == null)
+                return;
 
             var self = _tileObject;
             var target = info.transform.GetComponent<TileObject>();
